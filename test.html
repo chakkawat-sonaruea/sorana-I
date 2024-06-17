@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script> 
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/json-enc.js"></script>
+
+    <style>
+        br {
+            line-height: 300%;
+        }
+    </style>
+
+    <title>Test</title>
+</head>
+<body>
+    <span>Testing failed Authorization</span>
+    <code
+        hx-post="http://localhost:55511"
+        hx-headers='{ "Authorization": "AAAA" }'
+        hx-vals='{
+            "a": 10,
+            "b": 6
+        }'
+        hx-ext="json-enc"
+        hx-swap="innerHTML"
+        hx-trigger="load"
+    ></code>
+
+    <br>
+
+    <span>Testing passed</span>
+    <code
+        hx-post="http://localhost:55511"
+        hx-headers='{ "Authorization": "DEVCREW-BACKEND-TEST" }'
+        hx-vals='{
+            "a": 10,
+            "b": 6
+        }'
+        hx-ext="json-enc"
+        hx-swap="innerHTML"
+        hx-trigger="load"
+    ></code>
+
+    <br>
+
+    <span>Testing passed</span>
+    <code
+        hx-post="http://localhost:55511"
+        hx-headers='{ "Authorization": "DEVCREW-BACKEND-TEST" }'
+        hx-vals='{
+            "a": -2,
+            "b": 5.1
+        }'
+        hx-ext="json-enc"
+        hx-swap="innerHTML"
+        hx-trigger="load"
+    ></code>
+
+    <br>
+
+    <span>Testing failed unsupported data format</span>
+    <code
+        hx-post="http://localhost:55511"
+        hx-headers='{ "Authorization": "DEVCREW-BACKEND-TEST" }'
+        hx-vals='{
+            "a": -2,
+        }'
+        hx-ext="json-enc"
+        hx-swap="innerHTML"
+        hx-trigger="load"
+    ></code>
+</body>
+</html>
